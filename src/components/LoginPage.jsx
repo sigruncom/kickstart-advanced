@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { User, Mail, Lock, LogIn, UserPlus, ArrowRight } from 'lucide-react';
+import { User, Mail, Lock, LogIn, UserPlus, ArrowRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function LoginPage() {
@@ -28,7 +28,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -36,27 +36,36 @@ export default function LoginPage() {
             >
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-2">SOMBA Kickstart</h1>
-                    <p className="text-purple-200/70">AI Assistant</p>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-glow-primary">
+                            <Sparkles className="w-6 h-6 text-white" />
+                        </div>
+                    </div>
+                    <h1 className="text-2xl font-bold text-text-main mb-1">Kickstart AI</h1>
+                    <p className="text-text-secondary">SOMBA Kickstart Program</p>
                 </div>
 
                 {/* Card */}
-                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
+                <div className="card p-8">
                     {/* Toggle */}
-                    <div className="flex gap-2 mb-6 p-1 bg-white/5 rounded-lg">
+                    <div className="flex gap-2 mb-6 p-1 bg-gray-100 rounded-xl">
                         <button
                             onClick={() => setIsLogin(true)}
-                            className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${isLogin ? 'bg-purple-600 text-white' : 'text-purple-200 hover:bg-white/5'
+                            className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${isLogin
+                                    ? 'bg-white text-text-main shadow-soft'
+                                    : 'text-text-secondary hover:text-text-main'
                                 }`}
                         >
-                            <LogIn className="w-4 h-4 inline mr-2" />Sign In
+                            <LogIn className="w-4 h-4" />Sign In
                         </button>
                         <button
                             onClick={() => setIsLogin(false)}
-                            className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${!isLogin ? 'bg-purple-600 text-white' : 'text-purple-200 hover:bg-white/5'
+                            className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${!isLogin
+                                    ? 'bg-white text-text-main shadow-soft'
+                                    : 'text-text-secondary hover:text-text-main'
                                 }`}
                         >
-                            <UserPlus className="w-4 h-4 inline mr-2" />Register
+                            <UserPlus className="w-4 h-4" />Register
                         </button>
                     </div>
 
@@ -67,7 +76,7 @@ export default function LoginPage() {
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 exit={{ opacity: 0, height: 0 }}
-                                className="mb-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-200 text-sm"
+                                className="mb-4 p-3 bg-red-50 border-2 border-red-100 rounded-xl text-red-600 text-sm font-medium"
                             >
                                 {error}
                             </motion.div>
@@ -78,40 +87,40 @@ export default function LoginPage() {
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {!isLogin && (
                             <div>
-                                <label className="block text-purple-200 text-sm mb-1">Full Name</label>
+                                <label className="block text-text-main text-sm font-medium mb-1.5">Full Name</label>
                                 <div className="relative">
-                                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
+                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-tertiary" />
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="Your full name"
                                         required={!isLogin}
-                                        className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        className="input-field pl-12"
                                     />
                                 </div>
                             </div>
                         )}
 
                         <div>
-                            <label className="block text-purple-200 text-sm mb-1">Email</label>
+                            <label className="block text-text-main text-sm font-medium mb-1.5">Email</label>
                             <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-tertiary" />
                                 <input
                                     type="email"
                                     value={form.email}
                                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                                     placeholder="your@email.com"
                                     required
-                                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    className="input-field pl-12"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-purple-200 text-sm mb-1">Password</label>
+                            <label className="block text-text-main text-sm font-medium mb-1.5">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-tertiary" />
                                 <input
                                     type="password"
                                     value={form.password}
@@ -119,20 +128,20 @@ export default function LoginPage() {
                                     placeholder="••••••••"
                                     required
                                     minLength={6}
-                                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    className="input-field pl-12"
                                 />
                             </div>
                         </div>
 
                         {!isLogin && (
                             <div>
-                                <label className="block text-purple-200 text-sm mb-1">Cohort (Optional)</label>
+                                <label className="block text-text-main text-sm font-medium mb-1.5">Cohort (Optional)</label>
                                 <input
                                     type="text"
                                     value={form.cohort}
                                     onChange={(e) => setForm({ ...form, cohort: e.target.value })}
                                     placeholder="e.g., January 2026"
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    className="input-field"
                                 />
                             </div>
                         )}
@@ -140,16 +149,53 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                            className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50"
                         >
-                            {loading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}
-                            <ArrowRight className="w-4 h-4" />
+                            {loading ? (
+                                <>
+                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                    Please wait...
+                                </>
+                            ) : (
+                                <>
+                                    {isLogin ? 'Sign In' : 'Create Account'}
+                                    <ArrowRight className="w-4 h-4" />
+                                </>
+                            )}
                         </button>
                     </form>
+
+                    {/* Divider */}
+                    <div className="flex items-center gap-4 my-6">
+                        <div className="flex-1 h-px bg-gray-200"></div>
+                        <span className="text-text-tertiary text-xs font-medium">OR</span>
+                        <div className="flex-1 h-px bg-gray-200"></div>
+                    </div>
+
+                    {/* Demo Accounts */}
+                    <div className="space-y-2">
+                        <p className="text-text-secondary text-xs text-center mb-3">Try with demo accounts</p>
+                        <div className="grid grid-cols-2 gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setForm({ ...form, email: 'admin@sigrun.com', password: 'Admin123!' })}
+                                className="btn-secondary text-xs py-2"
+                            >
+                                Admin Demo
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setForm({ ...form, email: 'student1@example.com', password: 'Student123!' })}
+                                className="btn-secondary text-xs py-2"
+                            >
+                                Student Demo
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <p className="text-center text-purple-300/50 text-sm mt-6">
-                    © 2026 Sigrun GmbH
+                <p className="text-center text-text-tertiary text-xs mt-6">
+                    © 2026 Sigrun GmbH. All rights reserved.
                 </p>
             </motion.div>
         </div>
