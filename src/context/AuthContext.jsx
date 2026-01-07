@@ -2,7 +2,10 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 
 const AuthContext = createContext(null);
 
-const API_BASE = 'http://localhost:3001/api';
+// Use environment variable for API URL - allows configuration for deployed environments
+// In development, fallback to localhost:3001
+// For production, set VITE_API_URL in your deployment environment
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 const TOKEN_KEY = 'somba-auth-token';
 const USER_KEY = 'somba-auth-user';
 
