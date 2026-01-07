@@ -52,8 +52,8 @@ export default function LoginPage() {
                         <button
                             onClick={() => setIsLogin(true)}
                             className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${isLogin
-                                    ? 'bg-white text-text-main shadow-soft'
-                                    : 'text-text-secondary hover:text-text-main'
+                                ? 'bg-white text-text-main shadow-soft'
+                                : 'text-text-secondary hover:text-text-main'
                                 }`}
                         >
                             <LogIn className="w-4 h-4" />Sign In
@@ -61,8 +61,8 @@ export default function LoginPage() {
                         <button
                             onClick={() => setIsLogin(false)}
                             className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${!isLogin
-                                    ? 'bg-white text-text-main shadow-soft'
-                                    : 'text-text-secondary hover:text-text-main'
+                                ? 'bg-white text-text-main shadow-soft'
+                                : 'text-text-secondary hover:text-text-main'
                                 }`}
                         >
                             <UserPlus className="w-4 h-4" />Register
@@ -96,7 +96,8 @@ export default function LoginPage() {
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="Your full name"
                                         required={!isLogin}
-                                        className="input-field pl-12"
+                                        className="input-field"
+                                        style={{ paddingLeft: '3rem' }}
                                     />
                                 </div>
                             </div>
@@ -112,7 +113,8 @@ export default function LoginPage() {
                                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                                     placeholder="your@email.com"
                                     required
-                                    className="input-field pl-12"
+                                    className="input-field"
+                                    style={{ paddingLeft: '3rem' }}
                                 />
                             </div>
                         </div>
@@ -128,7 +130,8 @@ export default function LoginPage() {
                                     placeholder="••••••••"
                                     required
                                     minLength={6}
-                                    className="input-field pl-12"
+                                    className="input-field"
+                                    style={{ paddingLeft: '3rem' }}
                                 />
                             </div>
                         </div>
